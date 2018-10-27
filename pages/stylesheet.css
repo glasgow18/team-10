@@ -4,7 +4,8 @@
       padding: 100px 25px;
   }
   .container-fluid {
-      text-align: left;
+      text-align: center;
+      padding: 25px;
   }
   .bg-grey {
       background-color: #f6f6f6;
@@ -17,11 +18,3 @@
       text-align: center;
       margin: 25px 0;
     }
-
-.comment {
-    background-color: lightgrey;
-    width: 300px;
-    border: 25px solid green;
-    padding: 25px;
-    margin: 25px;
-}
