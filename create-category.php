@@ -1,24 +1,54 @@
 <?php
+
 include('includes/db-connect.php');
 
-// CATEGORY = name
+// RETURN JSON
+header('Content-type: application/json');
 
-// TODO - GET FROM THE FROM
 // $_POST['categoryname']
-$categoryname = "Chemo Therapy";
+$categoryname = $_POST['category_name'];
 
-// TODO - DO SOME CHECKS
+$errors = [];
 
-// MKAE SURE ISNT BLANK
+// CHECK ISNT BLANK
+if($categoryname=="" || !isset($categoryname)){
 
-// MAKE SURE DOESNT EXIST ALREADY
+    $errors[] = "The category name cannot be blank.";
+
+}
+
+// IF THERE ARE ERRORS, RETURN THESE
+if(count($errors)>0){
+
+    $response = array("status"=>"error",'errors'=>$errors);
+    echo json_encode($response);
+
+} else {
+
+    // PREPARE THE QUERY
+    $prequery = "INSERT INTO categories (name,created_at) values(?,NOW())";
+    $query = $conn->prepare($prequery);
+    $query->bindParam(1, $categoryname);
+    
+    // CHECK THE QUERY EXECUTES - CATCH IF THERE IS AN INTEGRITY CONSTAINT 
+    try {
+        
+        if($query->execute()){
+            $response = array('status'=>'success','message'=>'The category was successfully created');
+        echo json_encode($response);
+        }
+    
+    
+    } catch(PDOException $e) {
+       
+            $response = array('status'=>'error','errors'=> array('This category already exists'));
+            echo json_encode($response);
+    
+    }
+
+}
 
 
-$prequery = "INSERT INTO categories (name,created_at) values(?,NOW())";
-
-$query = $conn->prepare($prequery);
-$query->bindParam(1, $categoryname);
-$query->execute();
 
 
 ?>
