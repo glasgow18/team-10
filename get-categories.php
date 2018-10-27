@@ -12,6 +12,6 @@ $query->execute();
 $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
 // OUTPUT THE JSON
-print_r(json_encode($results));
+echo json_encode($results);
 
 ?>
