@@ -6,7 +6,7 @@ include('includes/db-connect.php');
 header('Content-type: application/json');
 
 // $_POST['categoryname']
-$categoryname = $_POST['category_name'];
+$categoryname = (isset($_POST['category_name']) ? $_POST['category_name'] : '');
 
 $errors = [];
 
