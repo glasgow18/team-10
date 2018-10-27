@@ -6,8 +6,10 @@ $Configuration['Conversations']['Version'] = '2.4.201';
 // Database
 $Configuration['Database']['Name'] = 'cwc';
 $Configuration['Database']['Host'] = 'localhost';
-$Configuration['Database']['User'] = 'cwc_user';
-$Configuration['Database']['Password'] = '[p]S?2rS';
+
+// TODO: ADD A PROPER USERNAME AND PASSWORD FOR THE DB
+$Configuration['Database']['User'] = 'root';
+$Configuration['Database']['Password'] = '';
 
 // EnabledApplications
 $Configuration['EnabledApplications']['Conversations'] = 'conversations';
