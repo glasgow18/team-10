@@ -1,4 +1,7 @@
-a<!DOCTYPE html>
+<?php
+ob_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Forum</title>
@@ -87,7 +90,7 @@ if(count($errors) > 0){
       ?>
 <!-- <h4><small>Page Name</small></h4> -->
       <hr>
-      <!-- <h2><a href="post.html">I'm worried about going to the hospital...</a></h2> -->
+       <!-- <h2><a href="post.html">I'm worried about going to the hospital...</a></h2> -->
       <h5><span class="glyphicon glyphicon-time"></span> Post by <a href="../profile_page.html"><?php echo $post['username'];?> </a>, <?php echo date('dS F Y H:i',strtotime($post['created_at']));?></h5>
       <h5><span class="label label-danger">Hospital</span> <span class="label label-primary">Treatment</span></h5><br>
       <p><?php echo $post['content'];?></p>
@@ -135,7 +138,60 @@ if(count($errors) > 0){
       <hr> -->
       
      
-              
+              <h3>Add Comment</h3>
+              <?php
+
+              if(isset($_POST['submit'])){
+
+                // GET THE DETAILS AND ADD THE POST
+                $postcontent = (isset($_POST['content']) ? $_POST['content']: '');
+                $errors = [];
+                if($postcontent==''){
+                  $errors[] = "The content cannot be blank";
+                }
+
+                if(count($errors) > 0){
+
+                  echo '<div class="alert alert-danger" role="alert">';
+                  echo "Your post cannot be blank";
+                  echo '</div>';
+
+                  // echo "<div>";
+                  // echo "The post cannot be blank";
+                  // echo "</div>"
+
+                } else {
+
+                  include('../includes/db-connect.php');
+                  $prequery = "INSERT INTO posts (content,created_at,user_id,category_id) values(?,NOW(),?,?)";
+
+                  $userID = 1;
+                  $categoryID = 43;
+        
+                  $query = $conn->prepare($prequery);
+                  $query->bindParam(1, $postcontent);
+                  $query->bindParam(2, $userID);
+                  $query->bindParam(3, $categoryID);
+                  $query->execute();
+
+                  header("Location: #add-post");
+
+                  ob_end_flush();
+
+                }
+
+              }
+
+              ?>
+              <form action="#add-post" id="add-post" method="post">
+              <div class="form-group">
+              <label for="post">Post</label>
+              <textarea class="form-control" id="post" rows="3" name="content" name="post"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" name="submit">Post</button>
+            </div>
+              </form>
             </div>
           </div>
         </div>
@@ -147,6 +203,6 @@ if(count($errors) > 0){
 <footer class="container-fluid">
   <p>© 2018 Children with Cancer UK. 51 Great Ormond Street, London, WC1N 3JQ. Registered Charity Number: 298405</p>
 </footer>
-
+<!-- <script src="../js/create-post.js"></script> -->
 </body>
 </html>
