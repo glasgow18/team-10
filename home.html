@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
+<p id="height"></p>
+<p id="width"></p>
+<p id="a"></p>
 
-<img src="assets/map.png" alt="Planets" usemap="#planetmap">
 
-<map name="planetmap">
-  <area shape="rect" coords="90,80,300,230" alt="city" href="city.htm">
+
+<img src="assets/map.png" alt="homePage" usemap="#map">
+
+<map name="map">
+  <!-- top left corner-->
+  <area shape="rect" coords="0,0,667,482" alt="city" href="pages/forum.html">
+  <!-- top right corner-->
+  <area shape="rect" coords="667,0,1334,482" alt="city" href="login2.html">
+  <!-- bottom left corner-->
+  <area shape="rect" coords="0,482,667,967" alt="city" href="profile_page.html">
+  <!-- bottom right corner-->
+  <area shape="rect" coords="667,482,1334,963" alt="city" href="pages/post.html">
+  
 </map>
 
 </body>
