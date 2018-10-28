@@ -1,13 +1,21 @@
 // MAKE SURE THE DOCUMENT IS READY
 $(document).ready(function () {
 
-    // SUBMIT THE FORM
-    $('#username').blur(function (e) {
+    // CHCK THE USERNAME ON BLUE
+    $('#email-signup').blur(function (e) {
+
+        var notification = $('#email-signup-notifiation');
+        var emailBox = $('#email-signup');
+
+        notification.val('');
+        
 
         // SETUP THE DATA TO SEND
         var formData = {
-            username: $('#username').val()
+            username: $('#email-signup').val()
         };
+
+        console.log('THIS RAN');
 
         // MAKE POST REQUEST TO RELEVANT PAGE
         $.post('check-username.php', formData, function (resp) {
@@ -17,6 +25,7 @@ $(document).ready(function () {
             if (resp.status == "success") {
 
                 //  POTENTIALLY DO NOTHING
+                $('#email-signup-notification').text(resp.errors[0]);
 
 
             } else {
@@ -24,6 +33,7 @@ $(document).ready(function () {
                 // UPDATE THE UI TO SAY CANT USE THIS NAME
                 // TODO: UPDATE UI
                 console.log(resp);
+                $('#email-signup-notifiation').text(resp.errors[0]);
 
 
             }

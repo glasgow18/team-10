@@ -83,7 +83,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 25px auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 45%; /* Could be more or less, depending on screen size */
 }
@@ -133,7 +133,7 @@ span.psw {
 
 .flex-container{
 	display: flex;
-	padding: 300px;
+	padding: 50px 0 0 0;
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
@@ -195,12 +195,14 @@ function checkPass()
 
 <div class="flex-container">
 
+    <img src="assets/logo-2.png" alt="Children with Cancer Logo">
+    <h1>Online Community</h1>
 	<button onclick="document.getElementById('id01').style.display='block'"  style="width:auto" >Login</button>
 	<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
 </div>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="pages/index.html">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="assets/child.png" alt="Avatar" class="avatar">
