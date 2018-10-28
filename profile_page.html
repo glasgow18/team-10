@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    body{font-family: "Arial Black", Gadget, sans-serif;}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+	
+	.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+	}
+	h4{
+		justify-content: center;
+		padding-bottom:10px;
+		color: #2d17ed;
+	}
+	h2{padding-bottom:40px;
+		padding-top: 25px;}
+
+	/* Clear floats after image containers */
+	.row::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-8 sidenav">
+		<h2>About me!</h2>
+		<h4>I am 9 years old<h4>
+		<h4>I am worried about ...<h4>
+		
+		<h2>Look at my beads!<h2>
+		<div class="row">
+			<div class="col-sm-3"><h4>7 Yellow beads <h4></div>
+			<div class="col-sm-3">
+				<div class="imgcontainer">
+					<img src="assets/yellow_bead.png">
+				</div>
+			</div>
+			<div class="col-sm-3"><h4>1 White beads <h4></div>
+			<div class="col-sm-3">
+				<div class="imgcontainer">
+					<img src="assets/white_bead.png">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-3"><h4>15 Blue beads <h4></div>
+			<div class="col-sm-3">
+				<div class="imgcontainer">
+					<img src="assets/blue_bead.png">
+				</div>
+			</div>
+			<div class="col-sm-3"><h4>15 Glass beads <h4></div>
+			<div class="col-sm-3">
+				<div class="imgcontainer">
+					<img src="assets/green_bead.png">
+				</div>
+			</div>
+		</div>
+		
+    </div>
+    <div class="col-sm-4 sidenav">
+      <div class="imgcontainer">
+        <img src="assets/rect3723.png">
+      </div>
+	  <h3>PirateHunter<h3>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
