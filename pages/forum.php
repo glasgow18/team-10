@@ -46,7 +46,7 @@ ob_start();
         <li class="active"><a href="#section1">Forum Home</a></li>
         <li><a href="#section2">Popular Questions</a></li>
         <li><a href="#section3">Hospital Questions</a></li>
-        <li><a href="#section3">Friends & Family Questions</a></li>
+        <li><a href="post.html">Friends & Family Questions</a></li>
       </ul><br>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Forums...">
