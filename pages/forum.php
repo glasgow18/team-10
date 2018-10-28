@@ -42,6 +42,11 @@ ob_start();
 
 	<br><br><br><br>
       <h4>Welcome to the Children with Cancer forums</h4>
+
+<div class="form-group">
+  <button class="btn btn-success" style="display:block;width:100%;"><span class="glyphicon glyphicon-pencil"></span> New Thread</button>
+  </div>
+
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#section1">Forum Home</a></li>
         <li><a href="#section2">Popular Questions</a></li>
