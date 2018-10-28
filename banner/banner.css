@@ -12,8 +12,8 @@ li {
     //border-color: blue;
     border-bottom-color: white;
     border-top-color: white;
-    border-right-color: red;
-    border-left-color: red;
+    border-right-color: #d7262e;
+    border-left-color: #d7262e;
     border-width: medium;
     border-style: solid;
 
@@ -21,7 +21,7 @@ li {
 
 li a, .dropbtn {
     display: inline-block;
-    color: red;
+    color: #d7262e;
     font-weight: bold;
     background-color: white;
     text-align: center;
@@ -31,7 +31,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: #d7262e;
     color: white;
 
 }
@@ -51,7 +51,7 @@ li.dropdown {
 }
 
 .dropdown-content a {
-    background: red;
+    background: #d7262e;
     color: white;
     padding: 12px 16px;
     text-decoration: none;
@@ -64,3 +64,43 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+
+    border-top: 5px solid #f00;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center
+}
+
+.button {
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+
+
+    vertical-align: middle;
+    font-size: 1.25em;
+    padding: 0.5em 1em;
+
+
+    float: right;
+    margin: 0.5em 0;
+    background-color: #318cdd;
+
+    margin-left: 1.0em;
+}
+
+
+.top {float:top}
+.bottom {float:bottom}
