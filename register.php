@@ -4,7 +4,6 @@ include('includes/db-connect.php');
 // RETURN JSON
 header('Content-type: application/json');
 
-// $_POST
 // USERNAME
 $username = (isset($_POST['username']) ? $_POST['username'] : '');
 
@@ -63,6 +62,10 @@ if($password=='' || $passconf==''){
 
         $errors[] = "Your passwords do not match";
 
+    } else {
+
+        // TODO: ADD A REGEX TO Meet criteria
+
     }
 
 }
@@ -75,16 +78,15 @@ if(count($errors)>0){
     echo json_encode($response);
 
 } else {
-    
-    
-    // TODO: CHECK IF PARENT / CHILD POST
 
         $prequery = "INSERT INTO users (username, email, password, created_at) values(?, ?, ?, NOW())";
         
+        $encryptedpass = sha1($password);
+
         $query = $conn->prepare($prequery);
         $query->bindParam(1, $username);
         $query->bindParam(2, $email);
-        $query->bindParam(3, sha1($password));
+        $query->bindParam(3, $encryptedpass);
     
 
     try {
@@ -96,7 +98,6 @@ if(count($errors)>0){
 
     } catch(PDOException $e){
 
-        print_r($e);
         $response = array('status'=>'error','errors'=>array('There was an error registering your account.'));
         echo json_encode($response);
 
