@@ -83,7 +83,7 @@ if(count($errors)>0){
 
     } catch(PDOException $e){
 
-        print_r($e);
+        // print_r($e);
 
         $response = array('status'=>'error','errors'=>array('There was an issue adding your post.'));
         echo json_encode($response);
