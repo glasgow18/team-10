@@ -26,17 +26,20 @@ if($username!=""){
             $errors[] = "That username is already been taken";
         }
 
+        // CHECK THE ERRORS AND OUTPUT
+        if(count($errors) > 0){
+
+            $response = array('status'=>'error','errors'=>$errors);
+            echo json_encode($response);
+        
+        } else {
+            $response = array('status'=>'success','message'=>'User name is available');
+            echo json_encode($response);
+        }
+
 }
 
-if(count($errors) > 0){
 
-    $response = array('status'=>'error','errors'=>$errors);
-    echo json_encode($response);
-
-} else {
-    $response = array('status'=>'success','message'=>'User name is available');
-    echo json_encode($response);
-}
 
 
 
