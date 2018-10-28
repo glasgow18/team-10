@@ -94,6 +94,7 @@ if(count($errors) > 0){
       <h5><span class="glyphicon glyphicon-time"></span> Post by <a href="../profile_page.html"><?php echo $post['username'];?> </a>, <?php echo date('dS F Y H:i',strtotime($post['created_at']));?></h5>
       <h5><span class="label label-danger">Hospital</span> <span class="label label-primary">Treatment</span></h5><br>
       <p><?php echo $post['content'];?></p>
+      <p><a href="#add-post"><span class="glyphicon glyphicon-comment"></span> Comment</a> <a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a></p>
       <br>
       <?php
 
@@ -185,7 +186,7 @@ if(count($errors) > 0){
               ?>
               <form action="#add-post" id="add-post" method="post">
               <div class="form-group">
-              <label for="post">Post</label>
+              <!-- <label for="post">Post</label> -->
               <textarea class="form-control" id="post" rows="3" name="content" name="post"></textarea>
             </div>
             <div class="form-group">
