@@ -1,40 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <style>
-
-
-.navbar {
-    margin-bottom: 0;
-    background-color: #ffffff;
-    z-index: 9999;
-    border: 0;
-    font-size: 12px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 3px;
-    border-radius: 0;
-}
-
-.navbar li a, .navbar .navbar-brand {
-    color: #e50000 !important;
-}
-
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
-    background-color: #1111 !important;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #fff !important;
-}
-
 
 
 
@@ -112,7 +83,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 25px auto 25% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 45%; /* Could be more or less, depending on screen size */
 }
@@ -162,7 +133,7 @@ span.psw {
 
 .flex-container{
 	display: flex;
-	padding: 300px;
+	padding: 50px 0 0 0;
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
@@ -176,36 +147,62 @@ span.psw {
 	align-content: center;
 	align-items: center;
 }
-
+.feedback-box {
+    margin:2em;
+    padding:1em;
+    text-align: center;
+    border-radius:5px;
+    
+    display:none;
+}
+.success.feedback-box {
+    color:darkgreen;
+    background: #CCFFCC;
+}
 </style>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Children With Cancer UK Forums</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      
-      </li>
-      </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+<script>
+//--------------------------------
+// This function checks if password and repeat password match
+//--------------------------------
+function checkPass()
+{
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    //set colors to show match/does not
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+
+    if(pass1.value == pass2.value){
+        
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+       
+    }else{
+        
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        
+    }
+}
+		
+//-->
+</script> 
+
+
 
 <div class="flex-container">
 
+    <img src="assets/logo-2.png" alt="Children with Cancer Logo">
+    <h1>Online Community</h1>
 	<button onclick="document.getElementById('id01').style.display='block'"  style="width:auto" >Login</button>
 	<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
 </div>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="pages/index.html">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="assets/child.png" alt="Avatar" class="avatar">
@@ -226,13 +223,13 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"> <a href="#">I forgot my password</a></span>
+      <span class="psw"> <a href="#">Did you forget your password?</a></span>
     </div>
   </form>
 </div>
 
 <div id="id02" class="modal">
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" id="registration" action="/action_page.php">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   
     <div class="container">
@@ -241,19 +238,21 @@ span.psw {
       <p>Please fill in this form to create an account.</p>
       
       <hr>
-      <!-- bull**** -->
+      <!-- signup page layout -->
      
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Choose Username" name="uname" required>
+      <input type="text" placeholder="Choose Username" id="email-signup" name="username" required>
+      <div id="email-signup-notifiation"></div>
       
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="pass1"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id = "password" required>
 
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <label for="pass2"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="passconf" id = "passconf" required>
+      <!-- <input type="password" placeholder="Repeat Password" name="pass2" id = "pass2" onkeyup="checkPass(); return false;" required> -->
       
       <label for="refCode"><b>Reference code</b></label>
       <input type="text" placeholder="Enter reference code" name="refCode" required>
@@ -265,8 +264,14 @@ span.psw {
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="flex-center">
+
         <button type="submit" class="signupbtn">Sign Up</button>
-		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        
+        <div class="feedback-box">
+            <h1>Successfully Registered</h1>
+            <p>Thank you for signing up - you have been successfully registered.</p>
+        </div>
         
       </div>
     </div>
@@ -285,6 +290,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-
+<!-- <script src="js/check-username.js" ></script> -->
+<script src="js/registration.js" ></script>
 </body>
 </html>
